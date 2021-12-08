@@ -12,7 +12,7 @@ Product.init(
     // define columns
     id: 
     {
-      type: integer,
+      type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autinIncrement: true
@@ -21,14 +21,14 @@ Product.init(
 
     product_name: 
     {
-      type: STRING,
+      type: DataTypes.STRING,
       allowNull: false
     },
 
 
     price: 
     {
-      type: decimal(10,2),
+      type:decimal(10,2),
       allowNull: false,
       validate:
       {
@@ -39,7 +39,7 @@ Product.init(
 
     stock: 
     {
-      type: integer,
+      type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: 10,
       validate: 
@@ -52,7 +52,7 @@ Product.init(
 
     catagory_id: 
     {
-      type:integer,
+      type:DataTypes.INTEGER,
       references:
       {
         model:'category',
