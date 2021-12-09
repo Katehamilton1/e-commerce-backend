@@ -37,7 +37,7 @@ router.get('/:id', (req, res) => {
         res.status(404).json({ message: 'No user found with this id' })
         return;
       }
-      res.json(dbCatagoryData);
+      res.json(dbCategoryData);
     })
     .catch(err => {
       res.status(500).json(err);
@@ -47,9 +47,9 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
   // create a new category
   Category.create({
-    catagory: req.body.category_name,
+    category: req.body,
   })
-    .then(dbCatagoryData => res.json(dbCatagoryData))
+    .then(dbCategoryData => res.json(dbCategoryData))
     .catch(err => res.status(500).json(err));
 });
 
@@ -60,12 +60,12 @@ router.put('/:id', (req, res) => {
       id: req.params.id
     }
   })
-  .then(dbCatagoryData => {
-    if (!dbCatagoryData[0]) {
+  .then(dbCategoryData => {
+    if (!dbCategoryData[0]) {
       res.status(404).json({ message: 'Invalid category'})
       return;
     }
-    res.json(dbCatagoryData)
+    res.json(dbCategoryData)
   })
     .catch(err => {
       res.status(500).json(err)
@@ -79,12 +79,12 @@ router.delete('/:id', (req, res) => {
       id: req.params.id
     }
   })
-    .then(dbCatagoryData => {
-      if (!dbCatagoryData) {
+    .then(dbCategoryData => {
+      if (!dbCategoryData) {
         res.status(404).json({ message: 'No user found with this id' });
         return;
       }
-      res.json(dbCatagoryData);
+      res.json(dbCategoryData);
   })
     .catch(err => {
       res.status(500).json(err);

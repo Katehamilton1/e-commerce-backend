@@ -15,7 +15,7 @@ Product.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
-      autinIncrement: true
+      autoIncrement: true
     },
 
 
@@ -28,7 +28,7 @@ Product.init(
 
     price: 
     {
-      type:decimal(10,2),
+      type:DataTypes.DECIMAL(10,2),
       allowNull: false,
       validate:
       {
@@ -53,6 +53,7 @@ Product.init(
     catagory_id: 
     {
       type:DataTypes.INTEGER,
+      allowNull:true,
       references:
       {
         model:'category',
