@@ -39,6 +39,7 @@ router.post('/', (req, res) => {
   Tag.create({
     tag_name: req.body.tag_name
   })
+  .then(dbCategoryData => res.json(dbCategoryData))
     .catch(err => {
       res.status(500).json(err);
     });
