@@ -34,12 +34,14 @@ router.get('/:id', (req, res) => {
   })
 });
 
+
 router.post('/', (req, res) => {
   // create a new tag
   Tag.create({
     tag_name: req.body.tag_name
   })
-  .then(dbCategoryData => res.json(dbCategoryData))
+  .then(dbCategoryData => 
+    res.json(dbCategoryData))
     .catch(err => {
       res.status(500).json(err);
     });
@@ -49,13 +51,14 @@ router.put('/:id', (req, res) => {
   // update a tag's name by its `id` value
   Tag.update(req.body, {
     where: {
-      id: req.body.id
+      id: req.params.id
     }
   })
     .then(dbCatagoryData => {
-      if (!dbCatagoryData[0]) {
+      if (!dbCatagoryData) {
         res.status(404).json({ message: 'Tag not found with id' });
       }
+      res.json(dbCatagoryData);
     })
 });
 

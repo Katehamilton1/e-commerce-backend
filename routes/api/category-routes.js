@@ -42,7 +42,9 @@ router.get('/:id', (req, res) => {
     .catch(err => {
       res.status(500).json(err);
     });
+    res.json(dbCategoryData);
 });
+
 
 
   router.post('/', (req, res) => {
@@ -63,7 +65,7 @@ router.put('/:id', (req, res) => {
     }
   })
   .then(dbCategoryData => {
-    if (!dbCategoryData[0]) {
+    if (!dbCategoryData) {
       res.status(404).json({ message: 'Invalid category'})
       return;
     }
